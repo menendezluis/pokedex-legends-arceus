@@ -1,15 +1,15 @@
-
+import {Fragment} from '../Fragment'
 export const Paper = (props:any) => {
  const {style, children,click, elevation} = props
  
 if(click){
   return (
-    <div  className={`${shadow[elevation]} m-2 bg-white ${style}`} onClick={click}>{children}</div>
+    <Fragment  style={`${shadow[elevation]} m-2 bg-white ${style}`} click={click}>{children}</Fragment>
   )
 }
 else
   {  return (
-    <div className={`${shadow[elevation]} m-2 bg-white ${style}`}>{children}</div>
+    <Fragment style={`${shadow[elevation]} m-2 bg-white ${style}`}>{children}</Fragment>
   )
 }
 }
