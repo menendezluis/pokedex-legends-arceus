@@ -1,5 +1,5 @@
 export const Input = (props: any) => {
-    const { style, click, value, change, id, type } = props
+    const { style, click, value, change, id, type,placeholder } = props
     return (
         <input
             className={
@@ -11,6 +11,7 @@ export const Input = (props: any) => {
             type={type}
             value={value}
             onChange={(e)=>change(e.target.value)}
+            placeHolder={placeholder}
            
         />
     )
