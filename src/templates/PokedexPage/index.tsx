@@ -11,13 +11,13 @@ import {
 import { getRandomInt } from '../../utils'
 
 export const PokedexPage = () => {
-    let [listPokemon, setListPokemon] = React.useState({})
-    const [pokemonAttack, setPokemonAttack] = React.useState([])
+    let [listPokemon, setListPokemon]: any = React.useState({})
+    const [pokemonAttack, setPokemonAttack]: any = React.useState([])
     const [width, setWidth] = React.useState(0)
     const [height, setHeight] = React.useState(0)
     const context = React.useContext(PokedexContext)
     const [initPokemon, setInitPokemon] = React.useState(getRandomInt(1, 870))
-    let tempArray = []
+    let tempArray: any = []
     let tempObject = {}
 
     const getPokemonScrollList = async (offset: number, start: number) => {
@@ -56,7 +56,7 @@ export const PokedexPage = () => {
                         pokemonAttack={pokemonAttack}
                     />
                 ) : (
-                    <Fragment style="bg-amber-100 w-[100%] h-[100%]">
+                    <Fragment style="bg-amber-100 w-[100%] h-[100%] flex flex-col justify-center items-center ">
                         {' '}
                         <Image source={LogoArceus} />
                         <h1>Selecciona un pokemon</h1>
@@ -107,10 +107,10 @@ export const PokedexPage = () => {
                             pokemonAttack={pokemonAttack}
                         />
                     ) : (
-                        <Fragment style="bg-amber-100 w-[100%] h-screen">
+                        <Fragment style="bg-amber-100 w-[100%] h-screen flex flex-col justify-center items-center">
                             {' '}
-                            <Image source={LogoArceus} />
                             <h1>Selecciona un pokemon</h1>
+                            <Image source={LogoArceus} />
                         </Fragment>
                     )}
                 </Fragment>

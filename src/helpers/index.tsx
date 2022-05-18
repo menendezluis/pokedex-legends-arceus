@@ -13,17 +13,19 @@ export type GlobalContent = {
     setPokemonMoves: (c: array) => void
     pokemonLoaded: array
     setPokemonLoaded: (c: array) => void
-    height: number
-    setHeight: (c: number) => void
-    width: number
-    setWidth: (c: number) => void
 }
 export const PokedexContext = createContext<GlobalContent>({
     openPokedex: false,
     setOpenPokedex: () => {},
     pokemonSearch: '',
     setPokemonSearch: () => {},
-    pokemonData: {},
+    pokemonData: {
+        name: '',
+        id: '',
+        types: [],
+        stats: [],
+        moves: [],
+    } as any,
     setPokemonData: () => {},
     pokemonList: {} as any,
     setPokemonList: () => {},
@@ -31,10 +33,6 @@ export const PokedexContext = createContext<GlobalContent>({
     setPokemonMoves: () => {},
     pokemonLoaded: [],
     setPokemonLoaded: () => {},
-    height: 0,
-    setHeight: () => {},
-    width: 0,
-    setWidth: () => {},
 })
 export const useGlobalContext = () => useContext(PokedexContext)
 export * from './pokemonInfo'

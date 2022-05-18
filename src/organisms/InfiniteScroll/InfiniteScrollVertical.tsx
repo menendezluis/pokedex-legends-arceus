@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { PokedexContext } from '../../helpers'
 
-let tempArray = []
+let tempArray: any = []
 
 export function InfiniteScrollVertical(props: any) {
     const { height, setHeight } = props
