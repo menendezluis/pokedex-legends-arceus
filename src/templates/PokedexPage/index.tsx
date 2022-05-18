@@ -2,20 +2,39 @@ import * as React from 'react'
 import { Button, Modal, Fragment, Text, Image, Label, Input } from '../../atoms'
 import { Avatar } from '../../molecules'
 import { InfiniteScroll, PokemonInfo } from '../../organisms'
-import { PokedexContext, getPokemonInfo, getPokemonList } from '../../helpers'
+import {
+    PokedexContext,
+    getPokemonAttackList,
+    getPokemonList,
+} from '../../helpers'
 import { getRandomInt } from '../../utils'
-import { typeEmojiPokemon } from '../../constants'
+import { typeEmojiPokemon, colorByTypePokemon } from '../../constants'
 
 export const PokedexPage = () => {
     const [listPokemon, setListPokemon] = React.useState([])
+    const [pokemonAttack, setPokemonAttack] = React.useState([])
     const context = React.useContext(PokedexContext)
-    let pokemonListAvailable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     let tempArray = []
 
     const getPokemonScrollList = async (offset: number, start: number) => {
-        setListPokemon(await getPokemonList(offset, start))
+        let data = await getPokemonList(offset, start)
+
+        setListPokemon(data)
     }
-    getPokemonScrollList(20, getRandomInt(1, 870))
+
+    const getPokemonMoveList = async (attacks: []) => {
+        let data = await getPokemonAttackList(attacks)
+        console.log('dataaaaaaa', data)
+        setPokemonAttack(data)
+    }
+    React.useEffect(() => {
+        getPokemonScrollList(20, getRandomInt(1, 870))
+    }, [context.width, context.height])
+    React.useEffect(() => {
+        if (context.pokemonData) {
+            getPokemonMoveList(context.pokemonData.moves)
+        }
+    }, [context.pokemonData])
 
     return (
         <Modal
@@ -47,19 +66,30 @@ export const PokedexPage = () => {
                             }
                             alt={context.pokemonData.name}
                         />
-                        {context.pokemonData.moves.map((item: any) => {
+
+                        {pokemonAttack.map((item: any) => {
                             return (
                                 <Text
-                                    style="bg-amber-500 text-white text-xl lg:text-2xl"
+                                    style={colorByTypePokemon[item.type.name]}
                                     bold
                                 >
-                                    {item.move.name}
+                                    {item.name} -{' '}
+                                    {typeEmojiPokemon[item.type.name]}
+                                    {'('}
+                                    {item.type.name}
+                                    {') - '}
+                                    {'('}
+                                    {item.damage_class.name}
+                                    {')'}
                                 </Text>
                             )
                         })}
                     </PokemonInfo>
                 ) : (
-                    <h1>Selecciona un pokemon</h1>
+                    <Fragment style="bg-amber-100 w-[100%] h-[100%]">
+                        {' '}
+                        <h1>Selecciona un pokemon</h1>
+                    </Fragment>
                 )}
             </Fragment>
             <Fragment>
@@ -119,19 +149,33 @@ export const PokedexPage = () => {
                                 }
                                 alt={context.pokemonData.name}
                             />
-                            {context.pokemonData.moves.map((item: any) => {
+                            {pokemonAttack.map((item: any) => {
+                                console.log(
+                                    'bg-' +
+                                        colorByTypePokemon[item.type.name] +
+                                        ' text-white text-xl lg:text-2xl'
+                                )
                                 return (
                                     <Text
-                                        style="bg-amber-500 text-white text-xl lg:text-2xl"
+                                        style={
+                                            'bg-' +
+                                            colorByTypePokemon[item.type.name] +
+                                            ' ' +
+                                            'text-white text-xl lg:text-2xl'
+                                        }
                                         bold
                                     >
-                                        {item.move.name}
+                                        {item.name} -{' '}
+                                        {typeEmojiPokemon[item.type.name]}
                                     </Text>
                                 )
                             })}
                         </PokemonInfo>
                     ) : (
-                        <h1>Selecciona un pokemon</h1>
+                        <Fragment style="bg-amber-100 w-[100%] h-screen">
+                            {' '}
+                            <h1>Selecciona un pokemon</h1>
+                        </Fragment>
                     )}
                 </Fragment>
             </Fragment>

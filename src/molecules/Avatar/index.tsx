@@ -14,7 +14,7 @@ export const Avatar = (props: any) => {
             style="flex lg:rounded-l-full lg:bg-black lg:bg-opacity-25 lg:w-[250px] cursor-pointer lg:hover:bg-white lg:hover:bg-opacity-10 my-1"
         >
             <Image
-                style="w-14 h-14 mx-8 lg:w-20 lg:mx-1 lg:h-20 rounded-full sm:border-r-2 hover:bg-white  hover:bg-opacity-10 border-gray-50 lg:border-opacity-20	"
+                style="w-14 h-14 mx-8 lg:w-20 lg:mx-1 lg:h-20 rounded-full sm:border-r-2 hover:bg-white  hover:bg-opacity-25 border-gray-50 lg:border-opacity-20 sm:rounded-full bg-white border-r-2 bg-opacity-20 drop-shadow-lg	"
                 source={source}
                 alt={text}
             />

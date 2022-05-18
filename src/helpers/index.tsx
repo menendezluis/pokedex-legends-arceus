@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useEffect } from 'react'
 
 export type GlobalContent = {
     openPokedex: boolean
@@ -9,6 +9,8 @@ export type GlobalContent = {
     setPokemonData: (c: object) => void
     pokemonList: array
     setPokemonList: (c: array) => void
+    pokemonMoves: array
+    setPokemonMoves: (c: array) => void
     pokemonLoaded: array
     setPokemonLoaded: (c: array) => void
 }
@@ -19,8 +21,10 @@ export const PokedexContext = createContext<GlobalContent>({
     setPokemonSearch: () => {},
     pokemonData: {},
     setPokemonData: () => {},
-    pokemonList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    pokemonList: [],
     setPokemonList: () => {},
+    pokemonMoves: [],
+    setPokemonMoves: () => {},
     pokemonLoaded: [],
     setPokemonLoaded: () => {},
 })
