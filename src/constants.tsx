@@ -3,7 +3,7 @@ export const URL = 'https://pokeapi.co/api/v2/pokemon/'
 export const URL_MOVES = 'https://pokeapi.co/api/v2/move/'
 export const typeEmojiPokemon: any = {
     bug: '🐛',
-    dark: '🌑',
+    dark: '🌗',
     dragon: '🐉',
     electric: '⚡',
     fairy: '🧚',

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { PokedexContext } from '../../helpers'
 
 export function InfiniteScrollHorizontal(props: any) {
+    const { width, setWidth } = props
     const containerRefDiv = React.useRef()
-
-    const [width, setWidth] = useState(0)
     const [currentScrollLeft, setCurrentScrollLeft] = useState(0)
+    const context = useContext(PokedexContext)
 
     const { children } = props
     const updateDivWidth = (e) => {
