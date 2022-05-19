@@ -6,7 +6,7 @@ https://user-images.githubusercontent.com/76136932/169289540-43fce0b3-3109-4ca7-
 
 # instalacion
 Clona el repositorio 
-git clone 
+git clone https://github.com/menendezluis/pokedex-legends-arceus.git
 
 instala las dependencias
 npm run install
